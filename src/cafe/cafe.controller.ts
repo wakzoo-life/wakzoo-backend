@@ -1,7 +1,7 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
-import { CafeService } from './cafe.service';
-import { CreateCafeDto } from './dto/create-cafe.dto';
-import { UpdateCafeDto } from './dto/update-cafe.dto';
+import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common'
+import { CafeService } from './cafe.service'
+import { CreateCafeDto } from './dto/create-cafe.dto'
+import { UpdateCafeDto } from './dto/update-cafe.dto'
 
 @Controller('cafe')
 export class CafeController {
@@ -9,26 +9,26 @@ export class CafeController {
 
   @Post()
   create(@Body() createCafeDto: CreateCafeDto) {
-    return this.cafeService.create(createCafeDto);
+    return this.cafeService.create(createCafeDto)
   }
 
   @Get()
   findAll() {
-    return this.cafeService.findAll();
+    return this.cafeService.findAll()
   }
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.cafeService.findOne(+id);
+    return this.cafeService.findOne(+id)
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateCafeDto: UpdateCafeDto) {
-    return this.cafeService.update(+id, updateCafeDto);
+    return this.cafeService.update(+id, updateCafeDto)
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.cafeService.remove(+id);
+    return this.cafeService.remove(+id)
   }
 }
