@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common'
-import { ConfigModule, ConfigService } from '@nestjs/config'
+import { ConfigModule } from '@nestjs/config'
 
 import { AppController } from './app.controller'
 import { CafeModule } from './cafe/cafe.module'
@@ -8,22 +8,14 @@ import { QnaModule } from './qna/qna.module'
 import { HomeModule } from './home/home.module'
 import { FaqModule } from './faq/faq.module'
 import { CreditModule } from './credit/credit.module'
-import { MongooseModule } from '@nestjs/mongoose'
+import { MongodbModule } from './database/mongoose/mongodb.module'
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
     }),
-
-    MongooseModule.forRootAsync({
-      imports: [ConfigModule],
-      useFactory: (configService: ConfigService) => ({
-        uri: configService.get('MONGODB_URI'),
-      }),
-      inject: [ConfigService],
-    }),
-
+    MongodbModule,
     CafeModule,
     CreditModule,
     FaqModule,
